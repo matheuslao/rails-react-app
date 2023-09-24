@@ -1,0 +1,21 @@
+services:
+
+  api:
+    image: react-rails-api:0.1
+    build:
+      dockerfile: Dockerfile
+      context: .
+    deploy:
+      replicas: 1
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3000:3000"  
+    networks:
+      - react-rails
+
+
+networks:
+  react-rails:
